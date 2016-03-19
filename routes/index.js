@@ -37,7 +37,6 @@ router.post('/add', function(req, res, next) {
   newTask.save()
   .then(function success (task) {
     console.log(task)
-    debugger
     res.send(task);
   })
   .catch(console.error);

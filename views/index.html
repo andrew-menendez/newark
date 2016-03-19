@@ -45,13 +45,9 @@
         </form>
       </div>
 
-
-
-
     <div class="col-xs-10">
 
-
-    <table class='table'>
+    <table class='table' id="hello" ng-controller="newark-task" >
         <thead>
             <tr>
                 <th>up</th>
@@ -61,24 +57,23 @@
             </tr>
         </thead>
         <tbody>
-          <!-- <div ng-init="fakeAlbum.songs"> -->
-          <div class="repeater" ng-controller='newark-task'>
-            <tr >
-                <td>
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-default btn-xs">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-                </td>
+           <tr ng-repeat="x in tasks">
+                  <td>
+                      <button class="btn btn-default btn-xs">
+                          <span class="glyphicon glyphicon-plus"></span>
+                      </button>
+                  </td>
+                  <td>
+                      <button class="btn btn-default btn-xs">
+                          <span class="glyphicon glyphicon-minus"></span>
+                      </button>
+                  </td>
 
-                  <td>put the task in here</td>
-                   <td>put the priority here </td>
-              </tr>
-            </div>
+                    <td>{{x.taskname}}</td>
+                     <td>{{x.pNumber}}</td>
+            </tr>
+
+
             <tr >
                 <td>
                     <button class="btn btn-default btn-xs">
