@@ -1,7 +1,7 @@
 
 var express = require("express");
 
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
 
@@ -10,8 +10,8 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 //bootstrap route
 app.use('/vendor', express.static( path.join(__dirname, 'node_modules')));
 
-//app.use(bodyParser.urlencoded({extended: false}));
-//app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser());
 
 //establish router
 app.use('/', require('./routes')); // brings in route/index...
