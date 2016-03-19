@@ -19,6 +19,28 @@ app.controller('newark-task', function ($http,$scope) {
         });
     };
 
+    $scope.remove = function(task) {
+      console.log(task)
+
+      var idObj={"id":task._id}
+      console.log(idObj);
+      //debugger
+
+      $http.post('/taskdel', idObj)
+       .then(
+           function(response){
+             console.log(response)
+             //this part took me a long time to figure out!
+             angular.element(document.getElementById('hello')).scope().get();
+           },
+           function(response){
+              console.log(response)
+           }
+
+        );
+
+      };
+
     $scope.get();//trying to figure out how to refresh...
 
 
@@ -28,7 +50,6 @@ app.controller('newark-task', function ($http,$scope) {
 
 
 app.controller('add', function ($http,$scope) {
-
 
   $scope.update = function(task) {
       console.log(task)
@@ -46,10 +67,8 @@ app.controller('add', function ($http,$scope) {
 
         );
 
-
       };
 
-
-
-
 });
+
+

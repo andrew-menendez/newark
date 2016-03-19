@@ -11,7 +11,10 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static( path.join(__dirname, 'node_modules')));
 
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser());
+// app.use(bodyParser());
+
+// parse application/json
+app.use(bodyParser.json())
 
 //establish router
 app.use('/', require('./routes')); // brings in route/index...
