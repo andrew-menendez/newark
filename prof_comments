@@ -1,0 +1,23 @@
+- syntax - watch semi-colons
+- remove console.logs - it muddies the code
+- add an npm start script
+- add ability to connect to the database within the models class
+- don't start server until you're connected to database
+- naming-- myscript.js -- not very descriptiive
+- no need to use .exec
+- use restful routes -- use delete verb for deleting routes -posting to /taskdel is a bad request if you are deleting a resource
+- angular.element(document.getElementById('hello')).scope().get() - I don't see the need for this.
+- I don't think the sorting is working
+- this concerns me quite a bit-- what are you trying to accomplish-- how could be passing throught the promise chain by calling angular.element
+    $http.post('/down', task)
+      .then(
+        function(response) {
+          console.log(response)
+            //this part took me a long time to figure out!
+          angular.element(document.getElementById('hello')).scope().get();
+        },
+        function(response) {
+          console.log(response)
+        }
+
+      );

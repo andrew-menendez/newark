@@ -86,6 +86,7 @@ app.controller('newark-task', function($http, $scope) {
   };
 
   $scope.get(); //trying to figure out how to refresh...
+ 
 
 
 
