@@ -6,7 +6,7 @@ var router = express.Router();
 
 //pulls in models and db connection
 var models = require('../models/');
-var Task=models.Task
+var Task = models.Task
 
 router.get('/', function(req, res, next) {
   console.log(req.body);
@@ -16,11 +16,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/tasks', function(req, res, next) {
   console.log(req.body);
-  Task.find({}).sort({pNumber:1}).exec()
-  .then(function success (tasks) {
-    res.send(tasks);
-  })
-  .catch(console.error);
+  Task.find({}).sort({
+      pNumber: 1
+    }).exec()
+    .then(function success(tasks) {
+      res.send(tasks);
+    })
+    .catch(console.error);
 });
 
 
@@ -35,11 +37,11 @@ router.post('/add', function(req, res, next) {
   });
 
   newTask.save()
-  .then(function success (task) {
-    console.log(task)
-    res.send(task);
-  })
-  .catch(console.error);
+    .then(function success(task) {
+      console.log(task)
+      res.send(task);
+    })
+    .catch(console.error);
 
 });
 // for some reason I couldn't get the delete call to work. idk why.
@@ -47,14 +49,61 @@ router.post('/add', function(req, res, next) {
 
 router.post('/taskdel', function(req, res, next) {
   console.log(req.body);
-  var id=req.body.id
+  var id = req.body.id
 
-  Task.remove({_id:id})
-  .exec()
-  .then(function success (task) {
-    res.send(task);
-  })
-  .catch(console.error);
+  Task.remove({
+      _id: id
+    })
+    .exec()
+    .then(function success(task) {
+      res.send(task);
+    })
+    .catch(console.error);
+});
+
+router.post('/up', function(req, res, next) {
+  console.log(req.body);
+
+  var newNum = req.body.pNumber + 1
+  var id = req.body._id
+
+  console.log(newNum);
+
+  Task.update({
+      _id: id
+    }, {
+      $set: {
+        pNumber: newNum
+      }
+    })
+    .exec()
+    .then(function success(task) {
+      res.send(task);
+    })
+    .catch(console.error);
+
+});
+
+router.post('/down', function(req, res, next) {
+  console.log(req.body);
+
+  var newNum = (req.body.pNumber - 1)
+  var id = req.body._id
+
+  console.log(newNum);
+
+  Task.update({
+      _id: id
+    }, {
+      $set: {
+        pNumber: newNum
+      }
+    })
+    .exec()
+    .then(function success(task) {
+      res.send(task);
+    })
+    .catch(console.error);
 });
 
 module.exports = router;

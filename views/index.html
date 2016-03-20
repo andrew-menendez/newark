@@ -60,12 +60,12 @@
         <tbody>
            <tr ng-repeat="x in tasks">
                   <td>
-                      <button class="btn btn-default btn-xs">
+                      <button class="btn btn-default btn-xs" ng-click='up(x)'>
                           <span class="glyphicon glyphicon-plus"></span>
                       </button>
                   </td>
                   <td>
-                      <button class="btn btn-default btn-xs">
+                      <button class="btn btn-default btn-xs" ng-click='down(x)'>
                           <span class="glyphicon glyphicon-minus"></span>
                       </button>
                   </td>
