@@ -58,7 +58,7 @@ router.post('/taskdel', function(req, res, next) {
     .then(function success(task) {
       res.send(task);
     })
-    .catch(console.error);
+    .catch(console.error);//what would happen here on error? My guess is we would just hang-- how about using next
 });
 
 router.post('/up', function(req, res, next) {
